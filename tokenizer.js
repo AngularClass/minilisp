@@ -28,7 +28,7 @@ module.exports = function tokenizer(text){
 		}
 
 		else if(token === constants.quote){
-			while(constants.isALetter(constants.nextToken())){
+			while(constants.isALetter(tokenStream.nextToken())){
 				tokenStream.advance();
 				token += tokenStream.currentToken(); 
 			}
