@@ -20,7 +20,3 @@ Tree.prototype.get = function(attr){
 Tree.prototype.insert = function(tree){
 	this.children.push(tree);
 }
-
-// Tree.prototype. = function(){}
-// Tree.prototype. = function(){}
-// Tree.prototype. = function(){}

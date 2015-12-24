@@ -2,7 +2,6 @@ var _ = require('lodash');
 var constants = require('./constants.js');
 
 var Controller = function(){
-	this.funcDefs = {};
 	this.result = '';
 }
 

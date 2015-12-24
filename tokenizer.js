@@ -49,9 +49,10 @@ var TokenSteam = function(text){
 }
 
 TokenSteam.prototype.advance = function(){
-	this.index++;
 	if(this.index === this.text.length){
 		this.done = true;
+	} else {
+		this.index++;
 	}
 }
 
@@ -66,10 +67,3 @@ TokenSteam.prototype.isDone = function(){
 TokenSteam.prototype.nextToken = function(){
 	return this.text[this.index+1];
 }
-
-// TokenSteam.prototype. = function(){}
-// TokenSteam.prototype. = function(){}
-// TokenSteam.prototype. = function(){}
-// TokenSteam.prototype. = function(){}
-// TokenSteam.prototype. = function(){}
-// TokenSteam.prototype. = function(){}

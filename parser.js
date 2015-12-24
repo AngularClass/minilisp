@@ -51,8 +51,7 @@ function processValue(token, ast){
 function processKeywords(token, ast){
     if(ast.pointer.get('type') === 'function' &&
        ast.pointer.get('value')=== 'defn'){
-        // we just created a funcdef node, before we insert a new
-        // node we run into the function name
+
         var tree = new Tree();
         tree.setType('function_name');
         tree.setValue(token.value);
@@ -60,20 +59,17 @@ function processKeywords(token, ast){
         ast.pointer.insert(tree);
     } else if(ast.pointer.get('value') === undefined &&
               !_.contains(FUNC_NAMES, token.value)){
-        // after the function name we get a new node with the
-        // argument names in it, argument names are keywords in a node
-        // where the parent is a "defn"
-        ast.pointer.setType('arguments'); // this is an arguments node
+        ast.pointer.setType('arguments'); 
         var tree = new Tree();
         tree.setType('variable');
         tree.setValue(token.value);
-        ast.pointer.insert(tree); // that gets arguments as children
+        ast.pointer.insert(tree); 
     } else if(_.contains(FUNC_NAMES, token.value)){
-        // the keyword is a function call
+        
         ast.pointer.setType('function');
         ast.pointer.setValue(token.value);
     } else {
-        // otherwise there is no information or context so it must be a variable
+        
         processValue(token, ast);
     }
 }
