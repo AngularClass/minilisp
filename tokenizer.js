@@ -3,7 +3,7 @@ var _ = require('lodash');
 
 module.exports = function tokenizer(text){
 	var result = [];
-	var tokenStream = new TokenSteam(text);
+	var tokenStream = new TokenStream(text);
 	while(!tokenStream.isDone()){
 		var token = tokenStream.currentToken();
 
@@ -42,13 +42,13 @@ module.exports = function tokenizer(text){
 	return result;
 }
 
-var TokenSteam = function(text){
+var TokenStream = function(text){
 	this.text = text;
 	this.index = 0;
 	this.done = false;
 }
 
-TokenSteam.prototype.advance = function(){
+TokenStream.prototype.advance = function(){
 	if(this.index === this.text.length){
 		this.done = true;
 	} else {
@@ -56,14 +56,14 @@ TokenSteam.prototype.advance = function(){
 	}
 }
 
-TokenSteam.prototype.currentToken = function(){
+TokenStream.prototype.currentToken = function(){
 	return this.text[this.index];
 }
 
-TokenSteam.prototype.isDone = function(){
+TokenStream.prototype.isDone = function(){
 	return this.done;
 }
 
-TokenSteam.prototype.nextToken = function(){
+TokenStream.prototype.nextToken = function(){
 	return this.text[this.index+1];
 }
