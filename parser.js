@@ -57,7 +57,7 @@ function processKeywords(token, ast){
         tree.setValue(token.value);
         FUNC_NAMES.push(token.value)
         ast.pointer.insert(tree);
-    } else if(ast.pointer.get('value') === undefined &&
+    } else if(ast.pointer.get('value') === null &&
               !_.contains(FUNC_NAMES, token.value)){
         ast.pointer.setType('arguments'); 
         var tree = new Tree();
